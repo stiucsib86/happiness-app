@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/Stylesheet.css">
-    <script type="text/javascript" src="/plugins/bootstrap_2.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/plugins/jquery-1.9.0.min.js"></script>
 </head>
 
 <body>
@@ -60,8 +60,10 @@ function fb_login(){
 
             FB.api('/me', function(response) {
                 user_email = response.email; //get user email
-          	// you can store this data into your database
-		  	window.location='/dashboard';
+          		// you can store this data into your database
+				jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/auth/?accessToken="+access_token+"&callback=?", function(data) {
+					window.location='/dashboard';
+				});
             });
 
         } else {
@@ -73,6 +75,7 @@ function fb_login(){
         scope: 'publish_stream,email'
     });
 }
+
 (function() {
     var e = document.createElement('script');
     e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
