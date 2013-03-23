@@ -98,7 +98,7 @@ class notifications_model extends CI_Model {
 		if (!isset($fields['notification_id']) || !is_numeric($fields['notification_id'])) {
 			throw new Exception("Invalid Notification ID.");
 		}
-		
+
 		$this->db->where('notification_id', $fields['notification_id']);
 		$this->db->set('is_deleted', 1);
 		return $this->db->update($this->tables['notifications']['notifications']);
@@ -111,11 +111,17 @@ class notifications_model extends CI_Model {
 			// And this need to be done first, before the rest of the where clause.
 			$_user = $this->user_library->get_user($fields);
 			if (isset($_user['fb_uid']) && is_numeric($_user['fb_uid'])) {
-				$this->db->or_where('user_id', $_user['fb_uid']);
+				$_or_where[] = 'user_id = ' . $_user['fb_uid'];
 			}
 			if (is_numeric($fields['user_id'])) {
-				$this->db->or_where('user_id', $fields['user_id']);
+				$_or_where[] = 'user_id = ' . $fields['user_id'];
 			}
+
+			if (is_array($_or_where)) {
+				$_or_where_text = '(' . implode(' OR ', $_or_where) . ')';
+			}
+
+			$this->db->where($_or_where_text, NULL, FALSE);
 		}
 
 		if (isset($fields['notification_id'])) {
