@@ -9,21 +9,21 @@ require_once('header.php');
                 <h4 id="activityHeading">Recent Activities</h4>
                 <ul>
                     <li>
-                        <div class="fromImg"><img src="images/nouser.jpg"/></div>
+                        <div class="fromImg"><img src="images/1.jpg"/></div>
                         <div class="activityDesc"><a href="#">Muthu</a> Gave <a href="#">xyzobject</a> to <a href="#">vincent</a> and recieved <a href="#">yyyobject</a></div>
-                        <div class="toImg"><img src="images/nouser.jpg"/></div>
+                        <div class="toImg"><img src="images/2.jpg"/></div>
                         <div class="clearfix"></div>
                     </li>
                     <li>
-                        <div class="fromImg"><img src="images/nouser.jpg"/></div>
+                        <div class="fromImg"><img src="images/3.jpg"/></div>
                         <div class="activityDesc"><a href="#">Muthu</a> Gave <a href="#">xyzobject</a> to <a href="#">vincent</a> and recieved <a href="#">yyyobject</a></div>
-                        <div class="toImg"><img src="images/nouser.jpg"/></div>
+                        <div class="toImg"><img src="images/4.jpg"/></div>
                         <div class="clearfix"></div>
                     </li>
                     <li>                   
-                        <div class="fromImg"><img src="images/nouser.jpg"/></div>
+                        <div class="fromImg"><img src="images/5.jpg"/></div>
                         <div class="activityDesc"><a href="#">Muthu</a> Gave <a href="#">xyzobject</a> to <a href="#">vincent</a> and recieved <a href="#">yyyobject</a></div>
-                        <div class="toImg"><img src="images/nouser.jpg"/></div>
+                        <div class="toImg"><img src="images/6.jpg"/></div>
                         <div class="clearfix"></div>
                     </li>
                 </ul>

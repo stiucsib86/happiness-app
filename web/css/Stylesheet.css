@@ -47,6 +47,8 @@ body {
 	list-style: none;
 	border: 1px solid #EEE;
 	margin: 0;
+	height: 260px;
+	background: white;
 }
 
 #activityHeading{

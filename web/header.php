@@ -26,6 +26,7 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == "::1") 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/css/Stylesheet.css">
     <script type="text/javascript" src="/plugins/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/plugins/main.js"></script>
 </head>
 
 <body>
