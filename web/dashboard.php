@@ -31,7 +31,7 @@ if ($_POST) {
 		}
 	});
 </script>
-<div id="dashboard">
+<div id="dashboard" class="container">
 	<div class="row-fluid top-item">
 
 		<?php require_once 'header_mini.php'; ?>
