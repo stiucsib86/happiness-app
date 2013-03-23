@@ -10,7 +10,7 @@ class users_profile_model extends CI_Model {
 	public function __construct() {
 		parent::__construct();
 
-		$this->TAG = "users_oauth_model";
+		$this->TAG = "users_profile_model";
 
 		$this->load->database();
 		$this->load->config('tables/users', TRUE);

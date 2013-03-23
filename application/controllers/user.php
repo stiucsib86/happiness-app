@@ -85,6 +85,10 @@ class User extends REST_Controller {
 		}
 	}
 
+	public function update_user_get() {
+		$this->index_post();
+	}
+
 }
 
 /* End of file user.php */

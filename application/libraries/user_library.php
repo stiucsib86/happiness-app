@@ -81,10 +81,6 @@ class User_library {
 
 	public function get_users($fields = false) {
 
-		if (!$this->ion_auth->is_admin()) {
-			return null;
-		}
-
 		if (isset($fields['keywords'])) {
 			if (!is_array($fields['keywords'])) {
 				$fields['keywords'] = array($fields['keywords']);
