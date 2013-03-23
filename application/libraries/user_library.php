@@ -216,7 +216,9 @@ class User_library {
 
 		// Get User Profile
 		$_user_profile = $this->users_profile_model->get_profile($fields, $options);
-		$user = array_merge($user, $_user_profile);
+		if (is_array($_user_profile)) {
+			$user = array_merge($user, $_user_profile);
+		}
 
 		return $user;
 	}

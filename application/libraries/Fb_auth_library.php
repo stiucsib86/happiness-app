@@ -19,13 +19,14 @@ class Fb_Auth_library {
 		$this->load->library('user_library');
 		$this->load->library('session');
 		$this->load->model('users_oauth_model');
+		$this->load->model('users_profile_model');
 
 		$this->facebook_config = $this->config->item('facebook_config', 'facebook');
 
 		$this->facebook = new Facebook(array(
-					'appId' => $this->facebook_config['app_id'],
-					'secret' => $this->facebook_config['app_secret'],
-				));
+			'appId' => $this->facebook_config['app_id'],
+			'secret' => $this->facebook_config['app_secret']
+		));
 
 		if (isset($_REQUEST['accessToken'])) {
 			$this->facebook->setAccessToken($_REQUEST['accessToken']);
@@ -64,10 +65,31 @@ class Fb_Auth_library {
 			$additional_data['last_name'] = $user_profile['last_name'];
 
 			$this->ion_auth->register($user_profile['username'], $generated_pwd, $user_profile['email'], $additional_data);
+
+			$_new_user_flag = true;
 		}
 
 		if (!$this->user_library->facebook_login($user_profile['email'])) {
 			throw new Exception('Error while logging in with Facebook');
+		}
+
+		try {
+			// Update profile data if its a new user.
+			if ($_new_user_flag) {
+				if (isset($user_profile['gender'])) {
+					$_profile_data['gender'] = $user_profile['gender'];
+				}
+				if (isset($user_profile['bio'])) {
+					$_profile_data['about_me'] = $user_profile['bio'];
+				}
+				if (isset($user_profile['dob'])) {
+					$_profile_data['dob'] = $user_profile['dob'];
+				}
+				$this->users_profile_model->update_profile($_profile_data);
+			}
+		} catch (Exception $e) {
+			// Do nothing. We don't care if the updating fails. The user can
+			// update this later.
 		}
 
 		// Finaly set user fb accessToken
