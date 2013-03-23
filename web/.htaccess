@@ -16,6 +16,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^dashboard$ /dashboard.php
 RewriteRule ^dashboard/$ /dashboard.php
 
+RewriteRule ^dashboard/give-gift$ /dashboard.php?type=give
+RewriteRule ^dashboard/give-gift/$ /dashboard.php?type=give
+
+RewriteRule ^dashboard/receive-gift$ /dashboard.php?type=receive
+RewriteRule ^dashboard/receive-gift/$ /dashboard.php?type=receive
+
 RewriteRule ^logout$ /logout.php
 RewriteRule ^logout/$ /logout.php
 # End - Core pages
