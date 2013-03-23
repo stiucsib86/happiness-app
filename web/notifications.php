@@ -32,7 +32,7 @@ require_once('header.php');
 							{{$index + 1}}
 						</td>
 						<td>
-							{{notification.message}}
+							<div ng-bind-html-unsafe='notification.message'></div>
 						</td>
 						<td>
 							<div ng-show="notification.is_read == 0">
@@ -66,33 +66,33 @@ require_once('header.php');
 			$scope.searchText = {};
 			$scope.mark_as_read = function(notification) {
 				jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_read/?callback=?', {
-								notification_id: notification.notification_id
-							}, function(xhrResponse) {
-								$scope.$apply(function() {
-									notification.is_read = 1;
-								});
-							});
+					notification_id: notification.notification_id
+				}, function(xhrResponse) {
+					$scope.$apply(function() {
+						notification.is_read = 1;
+					});
+				});
 			};
 
-						$scope.mark_as_unread = function(notification) {
-							jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_unread/?callback=?', {
-											notification_id: notification.notification_id
-										}, function(xhrResponse) {
-											$scope.$apply(function() {
-												notification.is_read = 0;
-											});
-										});
+			$scope.mark_as_unread = function(notification) {
+				jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_unread/?callback=?', {
+					notification_id: notification.notification_id
+				}, function(xhrResponse) {
+					$scope.$apply(function() {
+						notification.is_read = 0;
+					});
+				});
 			};
 
-									$scope.delete_notification = function(notification) {
-										if (confirm("Are you sure you want to delete this?")) {
-											jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/delete/?callback=?', {
-																notification_id: notification.notification_id
-															}, function(xhrResponse) {
-																$scope.get_all_notifications();
-															});
+			$scope.delete_notification = function(notification) {
+				if (confirm("Are you sure you want to delete this?")) {
+					jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/delete/?callback=?', {
+						notification_id: notification.notification_id
+					}, function(xhrResponse) {
+						$scope.get_all_notifications();
+					});
 				}
-														};
+			};
 
 		}
 	</script>
