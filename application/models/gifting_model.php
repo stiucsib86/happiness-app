@@ -80,7 +80,7 @@ class gifting_model extends CI_Model {
 		$data["receiver_fb_id"] = $fields["receiver_fb_id"];
 		$data["sender_fb_id"] = $fields["sender_fb_id"];
 		$data["gifting_url"] = $fields["gifting_url"];
-		$data["status"] = "accept";
+		$data["status"] = "accepted";
 		$data["thankyou_note"] = $data["thankyou_note"];
 
 		$this->db->update('gifting',$data);
