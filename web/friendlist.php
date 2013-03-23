@@ -3,7 +3,6 @@
 	<div>
 		<form class="form-search pull-right" style="margin: 5px 2px;">
 			<input type="text" class="input-medium search-query" placeholder="Search..." ng-model="fb_friends_filter">
-			<button type="submit" class="btn">Search</button>
 		</form>
 		<h4>Friends</h4>
 	</div>
