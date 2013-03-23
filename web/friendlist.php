@@ -16,7 +16,7 @@
 				</a>
 			</div>
 			<div class="span2">
-				<a href="/dashboard/give-gift/{{fb_friend.id}}" target="_self">
+				<a href="/dashboard/give-gift/{{fb_friend.id}}" target="_self" title="Send a gift">
 					<img class="giftbox" src="/images/favicon.png" border="0" />
 				</a>
 			</div>

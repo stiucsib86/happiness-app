@@ -10,13 +10,15 @@ if ($_POST) {
 			jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/send/?receiver_fb_id=<?php echo $_GET['id']; ?>&gifting_url=<?php echo urlencode($_POST['productURL']); ?>&callback=?", function(data) {
 				console.log(data);
 				alert('Congratulations, your friend has been notified!');
+				window.location='/dashboard/notifications';
 			});
 		<?php
 	} else if ($_GET['type'] == 'receive') {
 		?>
-			jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/accept/?gifting_id=<?php echo $_GET['id']; ?>&thankyou_note=<?php echo urlencode($_POST['thankyouNote']); ?>&callback=?", function(data) {
+			jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/accept/?gifting_id=<?php echo $_GET['id']; ?>&thankyou_note=<?php echo urlencode($_POST['thankyouNote']); ?>&sender_fb_id=<?php echo $_POST['senderId']; ?>&callback=?", function(data) {
 				console.log(data);
 				alert('Your friend is pleased that you like the gift!');
+				window.location='/dashboard/notifications';
 			});
 		<?php
 	} else {

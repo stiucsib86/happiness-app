@@ -71,4 +71,7 @@
                     <div class="span5">
                         <img id="profileImg" src="images/nouser.jpg"/>
                     </div>
+                </div>
+                <div class="row-fluid"> 
+                    <div class="fb-like" data-href="http://testbed1.seabedfactory.com/" data-send="true" data-width="450" data-show-faces="true"></div>  
                  </div>

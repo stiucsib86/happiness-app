@@ -5,7 +5,6 @@
 			document.getElementById('fbPic').src='https://graph.facebook.com/'+data.receiver_fb_id+'/picture?type=square';
 			var status = data.status;
 			if(status=='accepted') document.getElementById('thankyouNote').innerHTML=data.thankyou_note;
-			document.getElementById('senderId').value = data.sender_fb_id;
 		});
 	</script>
                 <h4>Accept Gift</h4>
@@ -15,11 +14,7 @@
                         <form class="form-inline" method="post" name="receive" action="/dashboard/receive-gift/<?php if(isset($_GET['id'])) echo $_GET['id']; ?>" target="_self">
                             <div class="span2"><img id="fbPic" src="/images/nouser.jpg" /></div>
                             <div class="span10">
-                            	<input type="hidden" id="senderId" name="senderId" value="" />
-                                <textarea class="span9" name="thankyouNote" id="thankyouNote" cols="30" rows="5"></textarea>
-                           		<div class="span10 tips" style="margin:10px 0 0 0;">
-                            		<span class="label">Tips</span> Enter a thank you message to your friend!
-                        		</div>
+                            	<div class="span9" name="thankyouNote" id="thankyouNote"></div>
                             </div>
                         </form>
                     </div>
