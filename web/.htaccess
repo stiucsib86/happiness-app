@@ -16,11 +16,14 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^dashboard$ /dashboard.php
 RewriteRule ^dashboard/$ /dashboard.php
 
-RewriteRule ^dashboard/give-gift$ /dashboard.php?type=give
-RewriteRule ^dashboard/give-gift/$ /dashboard.php?type=give
+RewriteRule ^dashboard/give-gift/(.+)/$ /dashboard.php?type=give&id=$1 [QSA]
+RewriteRule ^dashboard/give-gift/(.+)$ /dashboard.php?type=give&id=$1 [QSA]
 
-RewriteRule ^dashboard/receive-gift$ /dashboard.php?type=receive
-RewriteRule ^dashboard/receive-gift/$ /dashboard.php?type=receive
+RewriteRule ^dashboard/receive-gift/(.+)/$ /dashboard.php?type=receive&id=$1 [QSA]
+RewriteRule ^dashboard/receive-gift/(.+)$ /dashboard.php?type=receive&id=$1 [QSA]
+
+RewriteRule ^dashboard/notifications$ /notifications.php
+RewriteRule ^dashboard/notifications/$ /notifications.php
 
 RewriteRule ^logout$ /logout.php
 RewriteRule ^logout/$ /logout.php
