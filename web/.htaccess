@@ -15,6 +15,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Begin - Core pages
 RewriteRule ^dashboard$ /dashboard.php
 RewriteRule ^dashboard/$ /dashboard.php
+
+RewriteRule ^logout$ /logout.php
+RewriteRule ^logout/$ /logout.php
 # End - Core pages
 
 </IfModule>

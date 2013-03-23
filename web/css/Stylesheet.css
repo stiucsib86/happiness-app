@@ -49,8 +49,64 @@ body {
 .maincontents .signup .howto ol li {
 	padding:10px 0;
 }
-.maincontents h4 {
+
+.friendslist {
+	border-right: 1px solid #f1f1f1;
+}
+.friendslist img.giftbox {
+	max-width: 24px;
+}
+.friendslist span {
+	font-size: 10px;
+}
+.friendslist .row-fluid {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #f1f1f1;
+}
+.friendslist h4 {
+	padding: 7px;
+	background-color: #f1f1f1;
+	margin-bottom: 10px;
+	margin-top: 1px;
+}
+
+h4 {
 	margin-bottom: 30px;
+}
+.top-item {
+	min-height:35px;
+	border-bottom: 1px solid #f1f1f1;
+	margin-top: 16px;
+}
+.top-item .menu {
+	padding-left:90px;
+}
+.top-item .menu ul {
+	list-style:none;
+	margin:0; padding:0;
+}
+.top-item .menu ul li {
+	list-style:none;
+	float:left;
+	margin:10px 0 10px 10px; padding:0;
+}
+.top-item .menu ul li a {
+	margin:0; padding-left:5px;
+}
+
+.menu-profile, .menu-mobile, .menu-logout {
+	float:left;
+	background:url(/images/icon_sprites.png) no-repeat scroll 0 0 transparent;
+	width:20px; height:20px;
+}
+.menu-profile {
+	background-position:0 -560px;
+}
+.menu-mobile {
+	background-position:-60px -392px;
+}
+.menu-logout {
+	background-position:-260px -308px;
 }
 
 .fineprint {
