@@ -26,7 +26,9 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == "::1") 
 			<link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
 			<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css' />
 			<link rel="stylesheet" href="/css/Stylesheet.css" />
+
 			<script type="text/javascript" src="/plugins/jquery-1.9.0.min.js"></script>
+			<script type="text/javascript" src="/plugins/bootstrap_2.3.1/js/bootstrap.min.js"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
 			<script type="text/javascript" src="/plugins/main.js"></script>
 	</head>
