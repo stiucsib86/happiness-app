@@ -21,13 +21,14 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == "::1") 
 				<link rel="icon" href="/images/favicon.png" />
 				<link rel="apple-touch-icon" href="/images/mobile-icon.png" />
 
-				<!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
-				<link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap.min.css" type="text/css" media="screen" />
-				<link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
-				<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-					<link rel="stylesheet" href="/css/Stylesheet.css">
-						<script type="text/javascript" src="/plugins/jquery-1.9.0.min.js"></script>
-						</head>
+    <!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
+    <link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap.min.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/Stylesheet.css">
+    <script type="text/javascript" src="/plugins/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/plugins/main.js"></script>
+</head>
 
 						<body>
 							<div id="fb-root"></div>
