@@ -101,6 +101,11 @@ class users_profile_model extends CI_Model {
 
 		if (isset($fields['interest'])) {
 			$fields['interest'] = json_decode($fields['interest']);
+			if (is_array($fields['interest'])) {
+				$fields['interest_text'] = implode(',', $fields['interest']);
+			} else {
+				$fields['interest_text'] = '';
+			}
 		}
 
 		return $fields;

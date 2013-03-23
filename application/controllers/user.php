@@ -32,7 +32,6 @@ class User extends REST_Controller {
 			} else {
 				$this->response(array('error' => 'User could not be found.'), 404);
 			}
-
 		} catch (Exception $e) {
 			$error_response = array();
 			$error_response['error'] = '[Error] ' . $e->getMessage();
@@ -47,7 +46,7 @@ class User extends REST_Controller {
 			// Format interest
 			if (isset($this->_all_request_parameters['interest'])) {
 				if (!is_array($this->_all_request_parameters['interest'])) {
-					$this->_all_request_parameters['interest'] = json_decode($this->_all_request_parameters['interest']);
+					$this->_all_request_parameters['interest'] = explode(',', $this->_all_request_parameters['interest']);
 				}
 			}
 
@@ -76,7 +75,6 @@ class User extends REST_Controller {
 			} else {
 				$this->response(array('error' => 'User could not be deleted.'), 404);
 			}
-
 		} catch (Exception $e) {
 			$error_response = array();
 			$error_response['error'] = '[Error] ' . $e->getMessage();

@@ -1,3 +1,11 @@
+<?php
+if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == "::1") {
+	define('FB_APP_ID', '229837820399095');
+} else {
+	define('FB_APP_ID', '454150781329329');
+}
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -5,13 +13,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo $pageTitle; ?></title>
-    
+
     <meta name="description" content="An easy to use e-retail solution to sell across web, social media and mobile. " />
     <meta name="keywords" content="" />
     <meta name="robots" content="index, follow" />
     <link rel="icon" href="/images/favicon.png" />
     <link rel="apple-touch-icon" href="/images/mobile-icon.png" />
-    
+
     <!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
     <link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap.min.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/plugins/bootstrap_2.3.1/css/bootstrap-responsive.min.css" type="text/css" media="screen" />
@@ -26,7 +34,7 @@
   window.fbAsyncInit = function() {
     // init the FB JS SDK
     FB.init({
-      appId      : '229837820399095', // App ID from the App Dashboard
+      appId      : '<?php echo FB_APP_ID ?>', // App ID from the App Dashboard
       channelUrl : '//special.localhost/plugins/facebook/channel.html', // Channel File for x-domain communication
       status     : true, // check the login status upon init?
       cookie     : true, // set sessions cookies to allow your server to access the session?
@@ -38,8 +46,8 @@
   };
 
   // Load the SDK's source Asynchronously
-  // Note that the debug version is being actively developed and might 
-  // contain some type checks that are overly strict. 
+  // Note that the debug version is being actively developed and might
+  // contain some type checks that are overly strict.
   // Please report such bugs using the bugs tool.
   (function(d, debug){
      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
