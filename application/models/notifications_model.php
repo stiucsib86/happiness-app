@@ -98,8 +98,7 @@ class notifications_model extends CI_Model {
 		if (!isset($fields['notification_id']) || !is_numeric($fields['notification_id'])) {
 			throw new Exception("Invalid Notification ID.");
 		}
-
-		$this->db->where('user_id', $this->session->userdata('user_id'));
+		
 		$this->db->where('notification_id', $fields['notification_id']);
 		$this->db->set('is_deleted', 1);
 		return $this->db->update($this->tables['notifications']['notifications']);
