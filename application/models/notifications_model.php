@@ -15,6 +15,7 @@ class notifications_model extends CI_Model {
 		$this->load->database();
 		$this->load->config('tables/notifications', TRUE);
 		$this->load->library('session');
+		$this->load->library('user_library');
 
 		//initialize db tables data
 		$this->tables = array_merge($this->config->item('tables', 'tables/notifications'));
@@ -105,9 +106,16 @@ class notifications_model extends CI_Model {
 	}
 
 	private function _set_filters($fields = FALSE, $options = FALSE) {
+
 		if (isset($fields['user_id'])) {
+			// Lets set the user fb_uid too!
+			// And this need to be done first, before the rest of the where clause.
+			$_user = $this->user_library->get_user($fields);
+			if (isset($_user['fb_uid']) && is_numeric($_user['fb_uid'])) {
+				$this->db->or_where('user_id', $_user['fb_uid']);
+			}
 			if (is_numeric($fields['user_id'])) {
-				$this->db->where('user_id', $fields['user_id']);
+				$this->db->or_where('user_id', $fields['user_id']);
 			}
 		}
 
