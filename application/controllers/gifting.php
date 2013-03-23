@@ -9,6 +9,7 @@ class Gifting extends REST_Controller {
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('gifting_model');
+		$this->load->model('notifications_model');
 		$this->load->library('session');
 		$this->_all_request_parameters = array_merge($this->input->get()? : array(), $this->args());
 	}
@@ -55,8 +56,14 @@ class Gifting extends REST_Controller {
 			if(is_numeric($this->session->userdata("user_id"))){
 				$this->_all_request_parameters["sender_fb_id"] = $this->session->userdata("user_id");
 			}
+
 			$gifting_id = $this->gifting_model->set_gifting_send($this->_all_request_parameters);
+			$fields["user_id"] = $this->_all_request_parameters["receiver_fb_id"];
+			$fields["message"] = "Hi! you have received a new gift! <a href='/gifting/?id=".$gifting_id."'>Click here</a> to check it out.";
+
+			$this->notifications_model->create_notification($fields);
 			$this->response($gifting_id, 200);
+			
 		} catch (Exception $e) {
 			$error_response = array();
 			$error_response['error'] = '[Error] ' . $e->getMessage();
@@ -66,7 +73,7 @@ class Gifting extends REST_Controller {
 	}
 
 	public function accept_get() {
-		
+
 		$this->accept_post();
 	}
 
