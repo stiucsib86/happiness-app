@@ -2,7 +2,6 @@
 $pageTitle = 'HappinessXchange - Notifications';
 require_once('header.php');
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
 <div ng-app class="container">
 
 	<?php require_once 'header_mini.php'; ?>
@@ -21,7 +20,7 @@ require_once('header.php');
 				<div class="span6">
 					<div class="pull-right">
 						<div style="margin: 20px;">
-							<span>Total of {{notifications.length}} notifications ({{getNumberUnread()}} unread)</span>
+							<span>Total of {{notifications.length}} notifications ({{getNumberUnreadNotifications()}} unread)</span>
 						</div>
 					</div>
 				</div>
@@ -61,32 +60,10 @@ require_once('header.php');
 	</style>
 
 	<script>
-		function NotificationsCtrl($scope, $http) {
+		function NotificationsCtrl($scope, $rootScope, $http) {
 
 			$scope.searchText = {};
-			$scope.notifications = [];
-			$scope.notifications._loading = true;
 
-			$scope.getNumberUnread = function() {
-				var _count = 0;
-				angular.forEach($scope.notifications, function(notification, key) {
-					if (notification.is_read == 0) {
-						_count++;
-					}
-				});
-				return _count;
-			}
-
-			$scope.get_all_notifications = function() {
-				jQuery.getJSON('<?php echo API_ENDPOINT ?>/notifications/?callback=?', {
-				}, function(xhrResponse) {
-					$scope.$apply(function() {
-						$scope.notifications._loading = false;
-						$scope.notifications = xhrResponse;
-						console.log('$scope.notifications', $scope.notifications);
-					});
-				});
-			};
 			$scope.mark_as_read = function(notification) {
 				jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_read/?callback=?', {
 					notification_id: notification.notification_id
@@ -117,10 +94,6 @@ require_once('header.php');
 				}
 			};
 
-			(function() {
-				// Initialize
-				$scope.get_all_notifications();
-			})();
 		}
 	</script>
 </div>
