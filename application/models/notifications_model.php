@@ -89,7 +89,6 @@ class notifications_model extends CI_Model {
 		}
 
 		// Exisiting entry exist.
-		$this->db->where('user_id', $this->session->userdata('user_id'));
 		$this->db->where('notification_id', $fields['notification_id']);
 		return $this->db->update($this->tables['notifications']['notifications'], $data);
 	}
