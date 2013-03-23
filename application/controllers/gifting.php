@@ -59,11 +59,11 @@ class Gifting extends REST_Controller {
 
 			$gifting_id = $this->gifting_model->set_gifting_send($this->_all_request_parameters);
 			$fields["user_id"] = $this->_all_request_parameters["receiver_fb_id"];
-			$fields["message"] = "Hi! you have received a new gift! <a href='/gifting/?id=".$gifting_id."'>Click here</a> to check it out.";
+			$fields["message"] = "Hi! you have received a new gift! <a href='dashboard/receive-gift/".$gifting_id."'>Click here</a> to check it out.";
 
 			$this->notifications_model->create_notification($fields);
 			$this->response($gifting_id, 200);
-			
+
 		} catch (Exception $e) {
 			$error_response = array();
 			$error_response['error'] = '[Error] ' . $e->getMessage();
