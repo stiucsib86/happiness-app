@@ -9,13 +9,18 @@ html {
 	margin:0; padding:0;
 }
 body {
-	margin:0; padding:0;
-	background:url(/images/gx_bg.jpg) center 100px no-repeat;
+	color: #545454;
+	background: #eaf6ff;
+	margin:0; 
+	padding:0;
+	background:url(/images/gx_bg.jpg) center 100px no-repeat;	
 	font-family:"Open Sans", Arial, Times;
 }
 
+
 .logo {
-	margin:30px auto; padding:0;
+	margin:50px auto; 
+	padding:0;
 	width:392px; height:197px;
 	background:url(/images/gx_logo.png) top center no-repeat;
 }
@@ -25,30 +30,91 @@ body {
 	background:url(/images/gx_logo_long.png) top center no-repeat;
 }
 
+/* login page... */
 
-.maincontents {
-	margin:0 auto; padding:0px;
-	width:1000px;
-}
-
-.maincontents .activities {
-	border-right: #CCC solid thin;
-	padding-right:20px;
-}
-.maincontents .activities .row-fluid {
-	margin-bottom: 20px;
+#mainContent{
+	width: 75%;
+	min-width: 1000px;
+	margin: auto;
 }
 
-.maincontents .signup {
-	padding:0;
-	text-align:center;
+#activities{
+	float: left;
+	min-width: 480px !important;
 }
-.maincontents .signup .howto {
-	padding:10px 20px;
+
+#activities ul{
+	list-style: none;
+	border: 1px solid #EEE;
+	margin: 0;
 }
-.maincontents .signup .howto ol li {
-	padding:10px 0;
+
+#activityHeading{
+	text-align: center;
+	margin: 0;
+	background: #F7F7F7;
+	padding: 10px;
+	border: 1px solid #EEE;
+	border-bottom: none;
+	border-radius: 10px 10px 0px 0px;
+	color: #777;
 }
+
+#activities ul li{
+	display: block;
+	margin: auto;
+	padding: 10px;
+	background: #FFF;
+}
+
+#activities ul li img{
+	max-height: 50px;
+	max-width: 50px;
+	border: 5px solid #FFF;
+	/*box-shadow: 0px 0px 7px #CCC;*/
+}
+
+#activities ul li .fromImg{
+	float: left;
+	margin-right: 20px;
+}
+
+#activities ul li .toImg{
+	float: left;
+	margin-left: 20px;
+}
+
+#activities ul li .activityDesc{
+	float: left;
+	height: 50px;
+	padding-top: 15px;
+}
+
+#signup{
+	background: #FFF;
+	padding: 30px;
+	margin-left: 40px;
+	border-radius: 10px;
+	margin-top: 80px;
+	float: left;
+	box-shadow: 0px 0px 20px #bee9f7;
+}
+
+#fbButton{
+	margin: auto;
+	display: block;
+}
+
+.howto ol li{
+	margin-bottom: 8px;
+}
+
+#happiness{
+	text-align: center;
+	color: #399DCC;
+}
+
+/********************/
 
 .friendslist {
 	border-right: 1px solid #f1f1f1;
