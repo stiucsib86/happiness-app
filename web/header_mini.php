@@ -48,7 +48,9 @@
 	</ul>
 
 	<div class="pull-left">
-		<div class="logoLong"></div>
+		<a href="/dashboard/">
+			<div class="logoLong"></div>
+		</a>
 	</div>
 </div>
 

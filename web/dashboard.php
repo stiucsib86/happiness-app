@@ -43,6 +43,10 @@ if ($_POST) {
             </div>
             <div class="span8">
 				<?php
+				if (!isset($_GET['type'])) {
+					$_GET['type'] = '';
+				}
+
 				switch ($_GET['type']) {
 					case 'give':
 						$getFile = 'give-gift.php';
