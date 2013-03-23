@@ -23,11 +23,7 @@ class users_profile_model extends CI_Model {
 	public function get_profile($fields = FALSE, $options = FALSE) {
 
 		if (!isset($fields['user_id']) || !is_numeric($fields['user_id'])) {
-			if (!is_numeric($this->session->userdata('user_id'))) {
-				throw new Exception("Error. User is not authorized.");
-			} else {
-				$fields['user_id'] = $this->session->userdata('user_id');
-			}
+			return false;
 		}
 
 		$this->_set_filters($fields);

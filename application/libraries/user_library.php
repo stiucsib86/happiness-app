@@ -210,6 +210,8 @@ class User_library {
 			}
 		}
 
+		$fields['user_id'] = $fields['id'];
+
 		// Get User Profile
 		$_user_profile = $this->users_profile_model->get_profile($fields, $options);
 		if (is_array($_user_profile)) {
