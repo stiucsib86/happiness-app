@@ -11,6 +11,7 @@ html {
 body {
 	color: #545454;
 	background: #eaf6ff;
+	background: #fcfcfc;
 	margin:0; 
 	padding:0;
 	background:url(/images/gx_bg.jpg) center 100px no-repeat;	
@@ -47,8 +48,9 @@ body {
 	list-style: none;
 	border: 1px solid #EEE;
 	margin: 0;
-	height: 260px;
+	height: 280px;
 	background: white;
+	border-radius: 0px 0px 10px 10px;
 }
 
 #activityHeading{
@@ -67,6 +69,7 @@ body {
 	margin: auto;
 	padding: 10px;
 	background: #FFF;
+	border-radius: 0px 0px 10px 10px;
 }
 
 #activities ul li img{
@@ -117,6 +120,9 @@ body {
 }
 
 /********************/
+
+
+/*** DASHBOARD ***/
 
 .friendslist {
 	border-right: 1px solid #f1f1f1;

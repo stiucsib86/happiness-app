@@ -32,7 +32,7 @@ if ($_POST) {
 		}
 	});
 </script>
-<div class="dashboard container">
+<div id="dashboard">
 	<div class="row-fluid top-item">
 		<div class="span7">
 			<div class="logoLong"></div>

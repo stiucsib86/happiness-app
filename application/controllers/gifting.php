@@ -45,6 +45,11 @@ class Gifting extends REST_Controller {
 		}
 	}	
 
+	public function send_get() {
+
+		$this->send_post();
+	}
+
 	public function send_post() {
 		try{
 			if(is_numeric($this->session->userdata("user_id"))){
@@ -58,6 +63,11 @@ class Gifting extends REST_Controller {
 			$error_response['code'] = 404;
 			$this->response($error_response, 404);
 		}
+	}
+
+	public function accept_get() {
+		
+		$this->accept_post();
 	}
 
 	public function accept_post() {
