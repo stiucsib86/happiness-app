@@ -2,7 +2,6 @@
 $pageTitle = 'HappinessXchange - Dashboard';
 require_once('header.php');
 ?>
-
 <?php
 if ($_POST) {
 	?>

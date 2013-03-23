@@ -74,7 +74,7 @@ class Notification extends REST_Controller {
 
 		try {
 			$this->_all_request_parameters['user_id'] = $this->session->userdata('user_id');
-			$this->_all_request_parameters['message'] = "Lorem Ipsum";
+			$this->_all_request_parameters['message'] = "You have a new gift. Check it here.";
 			$result = $this->notifications_model->create_notification($this->_all_request_parameters);
 
 			if ($result) {
@@ -100,6 +100,11 @@ class Notification extends REST_Controller {
 
 	public function mark_as_read_get() {
 		$this->_all_request_parameters['is_read'] = 1;
+		$this->index_post();
+	}
+
+	public function mark_as_unread_get() {
+		$this->_all_request_parameters['is_read'] = 0;
 		$this->index_post();
 	}
 
