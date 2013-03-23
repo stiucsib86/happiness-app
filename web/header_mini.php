@@ -1,4 +1,4 @@
-<div class="row-fluid top-item" ng-app>
+<div class="row-fluid top-item" ng-app ng-cloak>
 	<div class="menu pull-right" ng-controller="NotificationsMiniCtrl">
 		<ul>
 			<li>
@@ -22,6 +22,12 @@
 		<div class="logoLong"></div>
 	</div>
 </div>
+
+<style>
+	[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+		display: none;
+	}
+</style>
 <script>
 	function NotificationsMiniCtrl($scope, $rootScope, $http) {
 
