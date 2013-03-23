@@ -28,7 +28,9 @@ class Gifting extends REST_Controller {
 
 	public function send_post() {
 		try{
-			$this->_all_request_parameters["sender_fb_id"] = $this->session->userdata("user_id");
+			if(is_numeric($this->session->userdata("user_id"))){
+				$this->_all_request_parameters["sender_fb_id"] = $this->session->userdata("user_id");
+			}
 			$gifting_id = $this->gifting_model->set_gifting_send($this->_all_request_parameters);
 			$this->response($gifting_id, 200);
 		} catch (Exception $e) {
@@ -41,7 +43,9 @@ class Gifting extends REST_Controller {
 
 	public function receive_post() {
 		try{
-			$this->_all_request_parameters["receiver_fb_id"] = $this->session->userdata("user_id");
+			if(is_numeric($this->session->userdata("user_id"))){
+				$this->_all_request_parameters["receiver_fb_id"] = $this->session->userdata("user_id");
+			}
 			$gifting_id = $this->gifting_model->set_gifting_receive($this->_all_request_parameters);
 			$this->response($gifting_id, 200);
 		} catch (Exception $e) {

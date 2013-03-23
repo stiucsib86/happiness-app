@@ -53,10 +53,9 @@ class gifting_model extends CI_Model {
 		if(isset($fields["gifting_url"])){
 			$gifting_obj["gifting_url"] = $fields["gifting_url"];
 		}
-
-		var_dump($gifting_obj);
 		
-		return $this->db->insert($this->tables['gifting']['gifting'], $gifting_obj);
+		$this->db->insert($this->tables['gifting']['gifting'], $gifting_obj);
+		return $this->db->insert_id();
 	}	
 
 	public function set_gifting_receive($fields = FALSE, $options = FALSE) {
@@ -78,7 +77,9 @@ class gifting_model extends CI_Model {
 		if(isset($fields["gifting_url"])){
 			$gifting_obj["gifting_url"] = $fields["gifting_url"];
 		}		
-		return $this->db->insert($this->tables['gifting']['gifting'], $gifting_obj);
+		
+		$this->db->insert($this->tables['gifting']['gifting'], $gifting_obj);
+		return $this->db->insert_id();
 	}
 
 
