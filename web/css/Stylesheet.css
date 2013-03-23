@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-root { 
+root {
     display: block;
 }
 
@@ -12,15 +12,15 @@ body {
 	color: #545454;
 	background: #eaf6ff;
 	background: #fcfcfc;
-	margin:0; 
+	margin:0;
 	padding:0;
-	background:url(/images/gx_bg.jpg) center 100px no-repeat;	
+	background:url(/images/gx_bg.jpg) center 100px no-repeat;
 	font-family:"Open Sans", Arial, Times;
 }
 
 
 .logo {
-	margin:50px auto; 
+	margin:50px auto;
 	padding:0;
 	width:392px; height:197px;
 	background:url(/images/gx_logo.png) top center no-repeat;
@@ -138,7 +138,7 @@ body {
 	border-bottom: 1px solid #f1f1f1;
 }
 .friendslist h4 {
-	padding: 7px;
+	padding: 10px;
 	background-color: #f1f1f1;
 	margin-bottom: 10px;
 	margin-top: 1px;
