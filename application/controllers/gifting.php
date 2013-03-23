@@ -80,7 +80,7 @@ class Gifting extends REST_Controller {
 	public function accept_post() {
 		try{
 			if(is_numeric($this->session->userdata("user_id"))){
-				$this->_all_request_parameters["receiver_fb_id"] = $this->session->userdata("user_id");
+				// $this->_all_request_parameters["receiver_fb_id"] = $this->session->userdata("receiver_fb_id");
 			}
 
 			$gifting_id = $this->gifting_model->set_gifting_accept($this->_all_request_parameters);
