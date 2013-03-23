@@ -1,24 +1,25 @@
-
-<div class="my-friends" ng-controller="FacebookFriendsCtrl">
+<div ng-controller="FacebookFriendsCtrl">
 	<div>
 		<form class="form-search pull-right" style="margin: 5px 2px;">
 			<input type="text" class="input-medium search-query" placeholder="Search..." ng-model="fb_friends_filter">
 		</form>
 		<h4>Friends</h4>
 	</div>
-	<div class="row-fluid" ng-repeat="fb_friend in fb_friends | filter:fb_friends_filter">
-		<div class="span2">
-			<img ng-src="https://graph.facebook.com/{{fb_friend.id}}/picture?type=square"/>
-		</div>
-		<div class="span8">
-			<a class="btn btn-link" href="https://www.facebook.com/{{fb_friend.id}}" target="_blank">
-				<div ng-bind-html-unsafe="fb_friend.name"></div>
-			</a>
-		</div>
-		<div class="span2">
-			<a href="/dashboard/give-gift/{{fb_friend.id}}" target="_self">
-				<img class="giftbox" src="/images/favicon.png" border="0" />
-			</a>
+	<div class="my-friends">
+		<div class="row-fluid" ng-repeat="fb_friend in fb_friends | filter:fb_friends_filter">
+			<div class="span2">
+				<img ng-src="https://graph.facebook.com/{{fb_friend.id}}/picture?type=square"/>
+			</div>
+			<div class="span8">
+				<a class="btn btn-link" href="https://www.facebook.com/{{fb_friend.id}}" target="_blank">
+					<div ng-bind-html-unsafe="fb_friend.name"></div>
+				</a>
+			</div>
+			<div class="span2">
+				<a href="/dashboard/give-gift/{{fb_friend.id}}" target="_self">
+					<img class="giftbox" src="/images/favicon.png" border="0" />
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
