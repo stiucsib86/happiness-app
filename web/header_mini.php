@@ -25,7 +25,7 @@
 		<li>
 			<div class="btn-group">
 				<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-					<i class="icon-user"></i>
+					<img ng-src="https://graph.facebook.com/{{auth.user.fb_uid}}/picture?type=square"  style="width: 25px;">
 					<span>{{auth.user.email || 'My Profile'}}</span>
 					<span class="caret"></span>
 				</a>
