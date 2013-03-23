@@ -31,14 +31,14 @@ class Users extends REST_Controller {
 			}
 		}
 
-//		$users = array();
-//		foreach ($this->_all_request_parameters['user_ids'] as $user_id) {
-//			if (is_numeric($user_id)) {
-//				unset($_fields);
-//				$_fields['user_id'] = $user_id;
-//				$users[] = $this->user_library->get_user($_fields);
-//			}
-//		}
+		//		$users = array();
+		//		foreach ($this->_all_request_parameters['user_ids'] as $user_id) {
+		//			if (is_numeric($user_id)) {
+		//				unset($_fields);
+		//				$_fields['user_id'] = $user_id;
+		//				$users[] = $this->user_library->get_user($_fields);
+		//			}
+		//		}
 
 		$users = $this->user_library->get_users($this->_all_request_parameters);
 

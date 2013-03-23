@@ -41,10 +41,6 @@ class User extends REST_Controller {
 		}
 	}
 
-	public function update_user() {
-		$this->index_post();
-	}
-
 	public function index_post() {
 		try {
 
@@ -87,6 +83,10 @@ class User extends REST_Controller {
 			$error_response['code'] = 404;
 			$this->response($error_response, 404);
 		}
+	}
+
+	public function update_user_get() {
+		$this->index_post();
 	}
 
 }
