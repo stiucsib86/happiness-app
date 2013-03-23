@@ -175,6 +175,11 @@ h4 {
 	background-position:-260px -308px;
 }
 
+.friendslist .my-friends {
+	height:700px;
+	overflow:auto;
+}
+
 .fineprint {
 	font-size:10px;
 }

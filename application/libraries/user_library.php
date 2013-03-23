@@ -23,6 +23,7 @@ class User_library {
 		$this->load->library('ion_auth');
 		$this->load->library('session');
 		$this->load->model('users_profile_model');
+		$this->load->model('users_oauth_model');
 
 		//initialize db tables data
 		//$this->tables = $this->config->item('tables', 'ion_auth');
@@ -210,10 +211,22 @@ class User_library {
 			}
 		}
 
+		$fields['user_id'] = $fields['id'];
+
 		// Get User Profile
 		$_user_profile = $this->users_profile_model->get_profile($fields, $options);
 		if (is_array($_user_profile)) {
 			$user = array_merge($user, $_user_profile);
+		}
+
+		// Get User FB Id
+		$_user_fb_oauth = $this->users_oauth_model->get_oauth_fb_by_user_id($fields, $options);
+		if (is_array($_user_fb_oauth)) {
+			if (isset($_user_fb_oauth['fb_uid'])) {
+				// We return the FB_uid only
+				$_temp['fb_uid'] = $_user_fb_oauth['fb_uid'];
+				$user = array_merge($user, $_temp);
+			}
 		}
 
 		return $user;

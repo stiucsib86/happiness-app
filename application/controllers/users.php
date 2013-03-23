@@ -31,16 +31,46 @@ class Users extends REST_Controller {
 			}
 		}
 
-		//		$users = array();
-		//		foreach ($this->_all_request_parameters['user_ids'] as $user_id) {
-		//			if (is_numeric($user_id)) {
-		//				unset($_fields);
-		//				$_fields['user_id'] = $user_id;
-		//				$users[] = $this->user_library->get_user($_fields);
-		//			}
-		//		}
+		if (isset($this->_all_request_parameters['fb_uids'])) {
+			if (is_array($this->_all_request_parameters['fb_uids'])) {
+				// Do nothing
+			} elseif (strstr($this->_all_request_parameters['fb_uids'], '[')) {
+				//is an JSON array
+				$this->_all_request_parameters['fb_uids'] = json_decode($this->_all_request_parameters['fb_uids']);
+			} elseif (strstr($this->_all_request_parameters['user_ids'], ',')) {
+				// might be comma separated
+				$this->_all_request_parameters['fb_uids'] = explode(',', $this->_all_request_parameters['fb_uids']);
+			}
+		}
 
-		$users = $this->user_library->get_users($this->_all_request_parameters);
+		// Get users based on user_id
+		if (isset($this->_all_request_parameters['user_ids']) && is_array($this->_all_request_parameters['user_ids'])) {
+			$_users_based_on_user_ids = $this->user_library->get_users($this->_all_request_parameters);
+		}
+
+		// Get users based on fb_uid
+		if (isset($this->_all_request_parameters['fb_uids']) && is_array($this->_all_request_parameters['fb_uids'])) {
+			foreach ($this->_all_request_parameters['fb_uids'] as $fb_uid) {
+				if (is_numeric($fb_uid)) {
+					$_fields['fb_uid'] = $fb_uid;
+					$_user_from_fb = $this->user_library->get_user_by_fb_uid($_fields);
+					if ($_user_from_fb) {
+						$_users_based_on_fb_uids[] = $_user_from_fb;
+					}
+				}
+			}
+		}
+
+		// Merge the results
+		$users = array();
+		if (isset($_users_based_on_user_ids) && is_array($_users_based_on_user_ids)) {
+			$users = array_merge($users, $_users_based_on_user_ids);
+		}
+		if (isset($_users_based_on_fb_uids) && is_array($_users_based_on_fb_uids)) {
+			$users = array_merge($users, $_users_based_on_fb_uids);
+		}
+
+
 
 		if ($users) {
 			$this->response($users, 200); // 200 being the HTTP response code
