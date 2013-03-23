@@ -37,38 +37,29 @@ if($_POST) {
             <div class="span5 menu">
               <ul>
               	<li><div class="menu-profile"></div><a href="/dashboard">My Profile</a></li>
-                <li><div class="menu-mobile"></div><a href="#">Download Mobile App</a></li>
+                <li><div class="menu-mobile"></div><a href="javascript:alert('Coming soon...');">Download Mobile App</a></li>
                 <li><div class="menu-logout"></div><a href="/logout">Log Out</a></li>
               </ul>
             </div>
         </div>
         <div class="row-fluid">
             <div class="span4 friendslist">
-                <h4>Friends</h4>
-                <div class="row-fluid">
-                    <div class="span2"><img src="images/nouser.jpg"/></div>
-                    <div class="span8"><a href="#">Muthukumar</a><br/><span>Woodlans,Singapore</span></div>
-                    <div class="span2"><img class="giftbox" src="images/favicon.png"/></div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span2"><img src="images/nouser.jpg"/></div>
-                    <div class="span8"><a href="#">Vincent Lau</a><br/><span>Texas,USA</span> </div>
-                    <div class="span2"><img class="giftbox" src="images/favicon.png"/></div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span2"><img src="images/nouser.jpg"/></div>
-                    <div class="span8"><a href="#">Christopher Lz</a><br/><span>Texas,USA</span></div>
-                    <div class="span2"><img class="giftbox" src="images/favicon.png"/></div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span2"><img src="images/nouser.jpg"/></div>
-                    <div class="span8"><a href="#">Bing Han</a> <br/><span>Alsert,NZ</span></div>
-                    <div class="span2"><img class="giftbox" src="images/favicon.png"/></div>
-                </div>
+				<?php require_once('friendlist.php'); ?>
             </div>
             <div class="span8">
 			<?php
-            require_once('profile.php');
+			switch(isset($_GET['type'])) {
+				case 'give':
+            		$getFile = 'give-gift.php';
+				break;
+				case 'receive':
+            		$getFile = 'receive-gift.php';
+				break;
+				default:
+            		$getFile = 'profile.php';
+				break;
+			}
+			require_once($getFile);
             ?>
             </div>
         </div>

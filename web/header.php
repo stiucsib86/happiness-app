@@ -62,7 +62,12 @@ function fb_login(){
                 user_email = response.email; //get user email
           		// you can store this data into your database
 				jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/auth/?accessToken="+access_token+"&callback=?", function(data) {
-					window.location='/dashboard';
+					FB.api('/me/friends', function(response) {
+							var friends = JSON.stringify(response.data);
+							window.localStorage.setItem("friends", friends);
+							//console.log(window.localStorage.getItem("friends"));
+							if(window.localStorage.getItem("friends")!='undefined') window.location='/dashboard';
+					});
 				});
             });
 
