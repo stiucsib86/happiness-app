@@ -7,7 +7,7 @@
 			if(status=='accepted') document.getElementById('thankyouNote').innerHTML=data.thankyou_note;
 		});
 	</script>
-                <h4>Accept Gift</h4>
+                <h4>View Accepted Gift</h4>
 				<iframe name="scrapePane" id="scrapePane" src="/scrape-product.php" frameborder="0" width="100%" height="240"></iframe>
                 <div class="row-fluid"> 
                     <div class="span12">
@@ -18,7 +18,4 @@
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="row-fluid text-center">
-                    <button class="btn btn-large btn-primary" onclick="document.receive.submit();"><i class="icon-white icon-gift"></i>&nbsp; Accept this Gift</button>
                 </div>
