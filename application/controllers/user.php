@@ -41,6 +41,10 @@ class User extends REST_Controller {
 		}
 	}
 
+	public function update_user() {
+		$this->index_post();
+	}
+
 	public function index_post() {
 		try {
 

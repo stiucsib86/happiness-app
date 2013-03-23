@@ -73,6 +73,10 @@ class Auth extends REST_Controller {
 		}
 	}
 
+	public function logout_get() {
+		$this->logout_post();
+	}
+
 	public function logout_post() {
 
 		$logout = $this->ion_auth->logout();
