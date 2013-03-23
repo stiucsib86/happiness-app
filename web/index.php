@@ -4,29 +4,49 @@ require_once('header.php');
 ?>
       <div id="mainContent">
 
-            <div id="activities">
+            <div id="leftContainer">
                 <div class="logo"></div>
-                <h4 id="activityHeading">Recent Activities</h4>
-                <ul>
+                <h4>Recent Activities</h4>
+                <div id="activities">
+                  <ul>
                     <li>
                         <div class="fromImg"><img src="images/1.jpg"/></div>
-                        <div class="activityDesc"><a href="#">Muthu</a> Gave <a href="#">xyzobject</a> to <a href="#">vincent</a> and recieved <a href="#">yyyobject</a></div>
+                        <div class="activityDesc"><a href="#">Muthu</a> gave a <a href="#">Canon EOS Rebel T3i 18MP CMOS...</a> to <a href="#">Vincent</a> and recieved a <a href="#">GoPro HERO3</a> from him</div>
                         <div class="toImg"><img src="images/2.jpg"/></div>
                         <div class="clearfix"></div>
                     </li>
                     <li>
                         <div class="fromImg"><img src="images/3.jpg"/></div>
-                        <div class="activityDesc"><a href="#">Muthu</a> Gave <a href="#">xyzobject</a> to <a href="#">vincent</a> and recieved <a href="#">yyyobject</a></div>
+                        <div class="activityDesc"><a href="#">Binghan</a> gave a <a href="#">Parrot AR Drone 2...</a> to <a href="#">Vincent</a> and recieved a <a href="#">Retro Tamagotchi Limited Edition</a> from him</div>
                         <div class="toImg"><img src="images/4.jpg"/></div>
                         <div class="clearfix"></div>
                     </li>
                     <li>                   
                         <div class="fromImg"><img src="images/5.jpg"/></div>
-                        <div class="activityDesc"><a href="#">Muthu</a> Gave <a href="#">xyzobject</a> to <a href="#">vincent</a> and recieved <a href="#">yyyobject</a></div>
+                        <div class="activityDesc"><a href="#">Abhinit</a> gave a <a href="#">Guitar Hero World Tour</a> to <a href="#">Binghan</a> and recieved a <a href="#">PlayStation 3 Black Version</a> from him</div>
                         <div class="toImg"><img src="images/6.jpg"/></div>
                         <div class="clearfix"></div>
                     </li>
-                </ul>
+                    <li>
+                        <div class="fromImg"><img src="images/1.jpg"/></div>
+                        <div class="activityDesc"><a href="#">Muhammad</a> gave a <a href="#">Carton of Milk</a> to <a href="#">Muthu</a> and recieved a <a href="#">Can of Soya Bean</a> from him</div>
+                        <div class="toImg"><img src="images/2.jpg"/></div>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>
+                        <div class="fromImg"><img src="images/3.jpg"/></div>
+                        <div class="activityDesc"><a href="#">Muhammad</a> gave a <a href="#">Halogen Light Stick</a> to <a href="#">Vincent</a> and recieved a <a href="#">Blue Lightsaber</a> from him</div>
+                        <div class="toImg"><img src="images/4.jpg"/></div>
+                        <div class="clearfix"></div>
+                    </li>
+                    <li>                   
+                        <div class="fromImg"><img src="images/5.jpg"/></div>
+                        <div class="activityDesc"><a href="#">Abhinit</a> gave a <a href="#">Super Mario Xtreme</a> to <a href="#">Muhammad</a> and recieved a <a href="#">Zelda Classic Adventure</a> from him</div>
+                        <div class="toImg"><img src="images/6.jpg"/></div>
+                        <div class="clearfix"></div>
+                    </li>
+                  </ul>
+                </div>
             </div>
 
             <div id="signup">
