@@ -65,11 +65,11 @@ class gifting_model extends CI_Model {
 
 		$data = array();
 
-		if(isset($fields['receiver_fb_id'])){
-			$this->db->where('receiver_fb_id',$fields['receiver_fb_id']);
-		} else{
-			throw new Exception("Error: no user object found");
-		}
+		// if(isset($fields['receiver_fb_id'])){
+		// 	$this->db->where('receiver_fb_id',$fields['receiver_fb_id']);
+		// } else{
+		// 	throw new Exception("Error: no user object found");
+		// }
 
 		if(isset($fields['gifting_id'])){
 			$this->db->where('gifting_id',$fields['gifting_id']);
