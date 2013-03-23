@@ -18,8 +18,12 @@ class User extends REST_Controller {
 	}
 
 	public function index_get() {
-
-		$user = $this->user_library->get_user($this->_all_request_parameters);
+		
+		if (isset($this->_all_request_parameters['fb_uid'])) {
+			$user = $this->user_library->get_user_by_fb_uid($this->_all_request_parameters);
+		} else {
+			$user = $this->user_library->get_user($this->_all_request_parameters);
+		}
 
 		if ($user) {
 			$this->response($user, 200); // 200 being the HTTP response code

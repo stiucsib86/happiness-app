@@ -70,7 +70,12 @@ class User_library {
 		$this->_set_filters($fields);
 
 		$query = $this->db->get($this->tables['users']['oauth_fb']);
-		return $query->row_array();
+		$row = $query->row_array();
+		if (isset($row['user_id']) && is_numeric($row['user_id'])) {
+			$_fields['user_id'] = $row['user_id'];
+			$row = $this->get_user($_fields);
+		}
+		return $row;
 	}
 
 	public function get_users($fields = false) {
