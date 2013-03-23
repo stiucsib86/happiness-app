@@ -75,7 +75,7 @@ class Fb_Auth_library {
 
 		try {
 			// Update profile data if its a new user.
-			if ($_new_user_flag) {
+			if (isset($_new_user_flag) && $_new_user_flag) {
 				if (isset($user_profile['gender'])) {
 					$_profile_data['gender'] = $user_profile['gender'];
 				}

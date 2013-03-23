@@ -13,35 +13,40 @@ class Users extends REST_Controller {
 		$this->lang->load('main', 'english');
 		$this->load->library('ion_auth');
 		$this->load->library('user_library');
-		
-		$this->_all_request_parameters = array_merge($this->input->get()?:array(), $this->args());
+
+		$this->_all_request_parameters = array_merge($this->input->get()? : array(), $this->args());
 	}
 
 	public function index_get() {
-		
+
+		if (isset($this->_all_request_parameters['user_ids'])) {
+			if (is_array($this->_all_request_parameters['user_ids'])) {
+				// Do nothing
+			} elseif (strstr($this->_all_request_parameters['user_ids'], '[')) {
+				//is an JSON array
+				$this->_all_request_parameters['user_ids'] = json_decode($this->_all_request_parameters['user_ids']);
+			} elseif (strstr($this->_all_request_parameters['user_ids'], ',')) {
+				// might be comma separated
+				$this->_all_request_parameters['user_ids'] = explode(',', $this->_all_request_parameters['user_ids']);
+			}
+		}
+
+//		$users = array();
+//		foreach ($this->_all_request_parameters['user_ids'] as $user_id) {
+//			if (is_numeric($user_id)) {
+//				unset($_fields);
+//				$_fields['user_id'] = $user_id;
+//				$users[] = $this->user_library->get_user($_fields);
+//			}
+//		}
+
 		$users = $this->user_library->get_users($this->_all_request_parameters);
-		
+
 		if ($users) {
 			$this->response($users, 200); // 200 being the HTTP response code
 		} else {
 			$this->response(array('error' => 'User(s) could not be found'), 404);
 		}
-	}
-	
-	public function id_get($params = FALSE) {
-		
-		if (is_numeric($params)) {
-			$users = $this->user_library->get_user($params);
-		} else {
-			//$users = $this->user_library->get_user($this->_all_request_parameters);
-		}
-		
-		if ($users) {
-			$this->response($users, 200); // 200 being the HTTP response code
-		} else {
-			$this->response(array('error' => 'User(s) could not be found'), 404);
-		}
-		
 	}
 
 }
