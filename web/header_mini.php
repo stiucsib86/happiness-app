@@ -2,9 +2,16 @@
 	<div class="menu pull-right" ng-controller="NotificationsMiniCtrl">
 		<ul>
 			<li>
-				<a class="btn" ng-class="{'btn-danger': getNumberUnreadNotifications() > 0}" href="/dashboard/notifications">
-					{{getNumberUnreadNotifications()}} new notifications
-				</a>
+				<div ng-show="getNumberUnreadNotifications() > 0">
+					<a class="btn btn-danger" href="/dashboard/notifications">
+						{{getNumberUnreadNotifications()}} new notifications
+					</a>
+				</div>
+				<div ng-hide="getNumberUnreadNotifications() > 0">
+					<a class="btn" href="/dashboard/notifications">
+						no new notifications
+					</a>
+				</div>
 			</li>
 			<li><div class="menu-profile"></div><a href="/dashboard">My Profile</a></li>
 			<li><div class="menu-mobile"></div><a href="javascript:alert('Coming soon...');">Download Mobile App</a></li>
@@ -20,7 +27,7 @@
 
 		$rootScope.notifications = [];
 		$rootScope.notifications._loading = true;
-		
+
 		$rootScope.getNumberUnreadNotifications = function() {
 			var _count = 0;
 			angular.forEach($rootScope.notifications, function(notification, key) {

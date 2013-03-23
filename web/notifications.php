@@ -26,28 +26,29 @@ require_once('header.php');
 				</div>
 			</div>
 
-			<table class="table table-hover">
-				<tr ng-repeat="notification in notifications | filter:searchText" ng-class="{'is_read' : notification.is_read == 1}">
-					<td>
-						{{$index + 1}}
-					</td>
-					<td>
-						{{notification.message}}
-					</td>
-					<td>
-						<div ng-show="notification.is_read == 0">
-							[ <a href="" ng-click="mark_as_read(notification)">mark as read</a> ]
-						</div>
-						<div ng-hide="notification.is_read == 0">
-							[ <a href="" ng-click="mark_as_unread(notification)">mark as unread</a> ]
-						</div>
-					</td>
-					<td>
-						<a class="btn btn-danger" href="" ng-click="delete_notification(notification)">
-							<i class="icon-trash icon-white"></i>
-						</a>
-					</td>
-				</tr>
+			<table class="table table-hover" ng-show="notifications.length > 0">
+				<tbody><tr ng-repeat="notification in notifications | filter:searchText" ng-class="{'is_read' : notification.is_read == 1}">
+						<td>
+							{{$index + 1}}
+						</td>
+						<td>
+							{{notification.message}}
+						</td>
+						<td>
+							<div ng-show="notification.is_read == 0">
+								[ <a href="" ng-click="mark_as_read(notification)">mark as read</a> ]
+							</div>
+							<div ng-hide="notification.is_read == 0">
+								[ <a href="" ng-click="mark_as_unread(notification)">mark as unread</a> ]
+							</div>
+						</td>
+						<td>
+							<a class="btn btn-danger" href="" ng-click="delete_notification(notification)">
+								<i class="icon-trash icon-white"></i>
+							</a>
+						</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
@@ -63,36 +64,35 @@ require_once('header.php');
 		function NotificationsCtrl($scope, $rootScope, $http) {
 
 			$scope.searchText = {};
-
 			$scope.mark_as_read = function(notification) {
 				jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_read/?callback=?', {
-					notification_id: notification.notification_id
-				}, function(xhrResponse) {
-					$scope.$apply(function() {
-						notification.is_read = 1;
-					});
-				});
+								notification_id: notification.notification_id
+							}, function(xhrResponse) {
+								$scope.$apply(function() {
+									notification.is_read = 1;
+								});
+							});
 			};
 
-			$scope.mark_as_unread = function(notification) {
-				jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_unread/?callback=?', {
-					notification_id: notification.notification_id
-				}, function(xhrResponse) {
-					$scope.$apply(function() {
-						notification.is_read = 0;
-					});
-				});
+						$scope.mark_as_unread = function(notification) {
+							jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/mark_as_unread/?callback=?', {
+											notification_id: notification.notification_id
+										}, function(xhrResponse) {
+											$scope.$apply(function() {
+												notification.is_read = 0;
+											});
+										});
 			};
 
-			$scope.delete_notification = function(notification) {
-				if (confirm("Are you sure you want to delete this?")) {
-					jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/delete/?callback=?', {
-						notification_id: notification.notification_id
-					}, function(xhrResponse) {
-						$scope.get_all_notifications();
-					});
+									$scope.delete_notification = function(notification) {
+										if (confirm("Are you sure you want to delete this?")) {
+											jQuery.getJSON('<?php echo API_ENDPOINT ?>/notification/delete/?callback=?', {
+																notification_id: notification.notification_id
+															}, function(xhrResponse) {
+																$scope.get_all_notifications();
+															});
 				}
-			};
+														};
 
 		}
 	</script>
