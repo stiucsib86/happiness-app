@@ -5,7 +5,6 @@ require APPPATH . '/libraries/REST_Controller.php';
 
 class Gifting extends REST_Controller {
 
-
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('gifting_model');
@@ -14,13 +13,12 @@ class Gifting extends REST_Controller {
 		$this->_all_request_parameters = array_merge($this->input->get()? : array(), $this->args());
 	}
 
-
 	public function index_get() {
-		try{
-			if(!isset($this->_all_request_parameters["id"])) {
+		try {
+			if (!isset($this->_all_request_parameters["id"])) {
 				$this->get_giftings();
 			}
-			$giftingId =  $this->_all_request_parameters["id"];
+			$giftingId = $this->_all_request_parameters["id"];
 			$gifting = $this->gifting_model->get_gifting($giftingId);
 			$this->response($gifting, 200);
 		} catch (Exception $e) {
@@ -32,8 +30,8 @@ class Gifting extends REST_Controller {
 	}
 
 	public function get_giftings() {
-		try{
-			if(is_numeric($this->session->userdata("user_id"))){
+		try {
+			if (is_numeric($this->session->userdata("user_id"))) {
 				$user_id = $this->session->userdata("user_id");
 			}
 			$giftings = $this->gifting_model->get_giftings($user_id);
@@ -52,18 +50,17 @@ class Gifting extends REST_Controller {
 	}
 
 	public function send_post() {
-		try{
-			if(is_numeric($this->session->userdata("user_id"))){
+		try {
+			if (is_numeric($this->session->userdata("user_id"))) {
 				$this->_all_request_parameters["sender_fb_id"] = $this->session->userdata("user_id");
 			}
 
 			$gifting_id = $this->gifting_model->set_gifting_send($this->_all_request_parameters);
 			$fields["user_id"] = $this->_all_request_parameters["receiver_fb_id"];
-			$fields["message"] = "Hi! You have received a new gift! <a href='/dashboard/receive-gift/".$gifting_id."'>Click here</a> to check it out.";
+			$fields["message"] = "Hi! You have received a new gift! <a href='/dashboard/receive-gift/" . $gifting_id . "'>Click here</a> to check it out.";
 
 			$this->notifications_model->create_notification($fields);
 			$this->response($gifting_id, 200);
-
 		} catch (Exception $e) {
 			$error_response = array();
 			$error_response['error'] = '[Error] ' . $e->getMessage();
@@ -78,18 +75,18 @@ class Gifting extends REST_Controller {
 	}
 
 	public function accept_post() {
-		try{
-			if(is_numeric($this->session->userdata("user_id"))){
+		try {
+			if (is_numeric($this->session->userdata("user_id"))) {
 				// $this->_all_request_parameters["receiver_fb_id"] = $this->session->userdata("receiver_fb_id");
 			}
 
-			$gifting_id = $this->gifting_model->set_gifting_accept($this->_all_request_parameters);
+			$result = $this->gifting_model->set_gifting_accept($this->_all_request_parameters);
 
 			$fields["user_id"] = $this->_all_request_parameters["sender_fb_id"];
-			$fields["message"] = "Hi! Your gift was accepted! <a href='/dashboard/view-gift/".$gifting_id."'>Click here</a> to check it out.";
+			$fields["message"] = "Hi! Your gift was accepted! <a href='/dashboard/view-gift/" . $this->_all_request_parameters['gifting_id'] . "'>Click here</a> to check it out.";
 			$this->notifications_model->create_notification($fields);
 
-			$this->response($gifting_id, 200);
+			$this->response($result, 200);
 		} catch (Exception $e) {
 			$error_response = array();
 			$error_response['error'] = '[Error] ' . $e->getMessage();
