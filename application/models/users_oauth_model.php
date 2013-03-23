@@ -36,6 +36,13 @@ class users_oauth_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function get_oauth_fb_by_user_id($fields = FALSE, $options = FALSE) {
+		if (!isset($fields['user_id']) || !is_numeric($fields['user_id'])) {
+			return false;
+		}
+		return $this->get_oauth_fb($fields, $options);
+	}
+
 	public function get_oauth_fbs($fields = FALSE, $options = FALSE) {
 
 		if (!isset($fields['fb_uids'])) {
@@ -53,11 +60,11 @@ class users_oauth_model extends CI_Model {
 		if (!is_numeric($this->session->userdata('user_id'))) {
 			throw new Exception("Error. User is not authorized.");
 		}
-		
+
 		$_user_oauth_fb = $this->get_oauth_fb($fields, $options);
-		
+
 		$data['accessToken'] = $fields['accessToken'];
-		
+
 		if ($_user_oauth_fb) {
 			// Exisiting entry exist.
 			$this->db->where('user_id', $this->session->userdata('user_id'));
@@ -68,7 +75,7 @@ class users_oauth_model extends CI_Model {
 			$this->db->set('fb_uid', $fields['fb_uid']);
 			return $this->db->insert($this->tables['users']['oauth_fb'], $data);
 		}
-		
+
 		return TRUE;
 	}
 
@@ -79,7 +86,7 @@ class users_oauth_model extends CI_Model {
 				$this->db->where('user_id', $fields['user_id']);
 			}
 		}
-		
+
 		if (isset($fields['fb_uids'])) {
 			if (!array($fields['fb_uids'])) {
 				$fields['fb_uids'] = array($fields['fb_uids']);
