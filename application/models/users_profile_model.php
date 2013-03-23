@@ -72,7 +72,7 @@ class users_profile_model extends CI_Model {
 		}
 
 		if (!isset($data) || empty($data)) {
-			throw new Exception("Error. Missing input parameters.");
+			return false;
 		}
 
 		$_user_profile = $this->get_profile($fields, $options);
