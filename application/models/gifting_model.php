@@ -51,7 +51,7 @@ class gifting_model extends CI_Model {
 		if(isset($fields["receiver_fb_id"])){
 			$gifting_obj["receiver_fb_id"] = $fields["receiver_fb_id"];
 		}
-		
+
 		if(isset($fields["gifting_url"])){
 			$gifting_obj["gifting_url"] = $fields["gifting_url"];
 		}
@@ -59,9 +59,12 @@ class gifting_model extends CI_Model {
 		$gifting_obj["status"] = 'sent';
 		$this->db->insert($this->tables['gifting']['gifting'], $gifting_obj);
 		return $this->db->insert_id();
-	}	
+	}
 
 	public function set_gifting_accept($fields = FALSE, $options = FALSE) {
+
+		$data = array();
+
 		if(isset($fields['receiver_fb_id'])){
 			$this->db->where('receiver_fb_id',$fields['receiver_fb_id']);
 		} else{
@@ -74,9 +77,13 @@ class gifting_model extends CI_Model {
 			throw new Exception("Error: no gifting ID found");
 		}
 
-		$fields["status"] = "accept";
-		var_dump($fields);
-		$this->db->update('gifting',$fields);
+		$data["receiver_fb_id"] = $fields["receiver_fb_id"];
+		$data["sender_fb_id"] = $fields["sender_fb_id"];
+		$data["gifting_url"] = $fields["gifting_url"];
+		$data["status"] = "accept";
+		$data["thankyou_note"] = $data["thankyou_note"];
+
+		$this->db->update('gifting',$data);
 		return $this->db->affected_rows();
 	}
 }
