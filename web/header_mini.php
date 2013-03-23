@@ -1,5 +1,5 @@
 <div class="row-fluid top-item" ng-app ng-cloak>
-	<div class="menu pull-right" ng-controller="NotificationsMiniCtrl">
+	<div class="menu pull-right" ng-controller="MenuBarCtrl">
 		<ul>
 			<li>
 				<div ng-show="getNumberUnreadNotifications() > 0">
@@ -29,7 +29,9 @@
 	}
 </style>
 <script>
-	function NotificationsMiniCtrl($scope, $rootScope, $http) {
+	function MenuBarCtrl($scope, $rootScope, $http) {
+
+		$rootScope.user = {};
 
 		$rootScope.notifications = [];
 		$rootScope.notifications._loading = true;
@@ -42,7 +44,7 @@
 				}
 			});
 			return _count;
-		}
+		};
 
 		$rootScope.get_all_notifications = function() {
 			jQuery.getJSON('<?php echo API_ENDPOINT ?>/notifications/?callback=?', {
@@ -55,9 +57,22 @@
 			});
 		};
 
+		$rootScope.get_user_data = function() {
+			jQuery.getJSON('<?php echo API_ENDPOINT ?>/auth/?callback=?', {
+			}, function(xhrResponse) {
+				$scope.$apply(function() {
+					$rootScope.user._loading = false;
+					$rootScope.user = xhrResponse;
+					console.log('$rootScope.user', $rootScope.user);
+				});
+			});
+		};
+
 		(function() {
 			// Initialize
 			$rootScope.get_all_notifications();
+			$rootScope.get_user_data();
 		})();
+
 	}
 </script>
