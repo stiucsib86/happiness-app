@@ -5,16 +5,16 @@ require_once('header.php');
 <script>
 <?php
 if ($_POST) {
-	if ($_GET['type'] == 'give' && $_POST['giftFlag'] == 1) {
+	if ($_GET['type'] == 'give') {
 		?>
 			jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/send/?receiver_fb_id=<?php echo $_GET['id']; ?>&gifting_url=<?php echo urlencode($_POST['productURL']); ?>&callback=?", function(data) {
 				console.log(data);
 				alert('Congratulations, your friend has been notified!');
 			});
 		<?php
-	} else if ($_GET['type'] == 'receive' && $_POST['giftFlag'] == 1) {
+	} else if ($_GET['type'] == 'receive') {
 		?>
-			jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/accept/?gifting_id=<?php echo $_GET['gid']; ?>&thankyou_note=<?php echo urlencode($_POST['thankyou_note']); ?>&callback=?", function(data) {
+			jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/accept/?gifting_id=<?php echo $_GET['id']; ?>&thankyou_note=<?php echo urlencode($_POST['thankyouNote']); ?>&callback=?", function(data) {
 				console.log(data);
 				alert('Your friend is pleased that you like the gift!');
 			});
@@ -46,7 +46,7 @@ if ($_POST) {
 				if (!isset($_GET['type'])) {
 					$_GET['type'] = '';
 				}
-
+				
 				switch ($_GET['type']) {
 					case 'give':
 						$getFile = 'give-gift.php';
