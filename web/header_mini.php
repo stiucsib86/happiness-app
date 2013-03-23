@@ -14,10 +14,26 @@
 				</div>
 			</li>
 			<li>
-				<a class="btn btn-link" href="/dashboard">
-					<div class="menu-profile"></div>
-					{{auth.user.email || 'My Profile'}}
-				</a>
+				<div class="btn-group">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+						{{auth.user.email || 'My Profile'}}
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="btn btn-link" href="/dashboard">
+								<div class="menu-profile"></div>
+								Profile
+							</a>
+						</li>
+						<li>
+							<a class="btn btn-link" href="/logout">
+								<div class="menu-logout"></div>
+								Log Out
+							</a>
+						</li>
+					</ul>
+				</div>
 			</li>
 			<li>
 				<a class="btn btn-link" href="javascript:alert('Coming soon...');">
@@ -26,10 +42,7 @@
 				</a>
 			</li>
 			<li>
-				<a class="btn btn-link" href="/logout">
-					<div class="menu-logout"></div>
-					Log Out
-				</a>
+
 			</li>
 		</ul>
 	</div>
