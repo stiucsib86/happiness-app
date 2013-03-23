@@ -93,6 +93,7 @@ class Fb_Auth_library {
 		}
 
 		// Finaly set user fb accessToken
+		$this->session->set_userdata('fb_uid', $user_profile['fb_id']);
 		$this->session->set_userdata('fb_accessToken', $_REQUEST['accessToken']);
 
 		// @TODO Store user FB oauth details to DB
