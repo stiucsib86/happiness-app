@@ -39,21 +39,12 @@ body {
 	margin: auto;
 }
 
-#activities{
+#leftContainer {
 	float: left;
 	min-width: 480px !important;
 }
 
-#activities ul{
-	list-style: none;
-	border: 1px solid #EEE;
-	margin: 0;
-	height: 280px;
-	background: white;
-	border-radius: 0px 0px 10px 10px;
-}
-
-#activityHeading{
+#leftContainer h4 {
 	text-align: center;
 	margin: 0;
 	background: #F7F7F7;
@@ -64,12 +55,24 @@ body {
 	color: #777;
 }
 
+#activities {
+	height:260px;
+	overflow:hidden;
+	background: white;
+	border: 1px solid #EEE;
+	border-radius: 0px 0px 10px 10px;
+}
+
+#activities ul {
+	list-style: none;
+	margin: 0;
+	height: 280px;
+}
+
 #activities ul li{
 	display: block;
 	margin: auto;
 	padding: 10px;
-	background: #FFF;
-	border-radius: 0px 0px 10px 10px;
 }
 
 #activities ul li img{
@@ -91,6 +94,7 @@ body {
 
 #activities ul li .activityDesc{
 	float: left;
+	width: 380px;
 	height: 50px;
 	padding-top: 15px;
 }
