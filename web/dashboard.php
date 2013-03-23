@@ -56,6 +56,9 @@ if ($_POST) {
 					case 'receive':
 						$getFile = 'receive-gift.php';
 						break;
+					case 'view':
+						$getFile = 'view-gift.php';
+						break;
 					default:
 						$getFile = 'profile.php';
 						break;
