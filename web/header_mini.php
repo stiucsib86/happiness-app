@@ -13,9 +13,24 @@
 					</a>
 				</div>
 			</li>
-			<li><div class="menu-profile"></div><a href="/dashboard">My Profile</a></li>
-			<li><div class="menu-mobile"></div><a href="javascript:alert('Coming soon...');">Download Mobile App</a></li>
-			<li><div class="menu-logout"></div><a href="/logout">Log Out</a></li>
+			<li>
+				<a class="btn btn-link" href="/dashboard">
+					<div class="menu-profile"></div>
+					{{auth.user.email || 'My Profile'}}
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-link" href="javascript:alert('Coming soon...');">
+					<div class="menu-mobile"></div>
+					Mobile App
+				</a>
+			</li>
+			<li>
+				<a class="btn btn-link" href="/logout">
+					<div class="menu-logout"></div>
+					Log Out
+				</a>
+			</li>
 		</ul>
 	</div>
 	<div class="pull-left">

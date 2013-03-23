@@ -114,7 +114,7 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == "::1") 
 		<script>
 			function MainAppCtrl($scope, $rootScope, $http) {
 
-				$rootScope.user = {};
+				$rootScope.auth = {};
 
 				$rootScope.notifications = [];
 				$rootScope.notifications._loading = true;
@@ -144,8 +144,8 @@ if ($_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == "::1") 
 					jQuery.getJSON('<?php echo API_ENDPOINT ?>/auth/?callback=?', {
 					}, function(xhrResponse) {
 						$scope.$apply(function() {
-							$rootScope.user._loading = false;
-							$rootScope.user = xhrResponse;
+							$rootScope.auth._loading = false;
+							$rootScope.auth = xhrResponse;
 							console.log('$rootScope.user', $rootScope.user);
 						});
 					});
