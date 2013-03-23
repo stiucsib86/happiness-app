@@ -22,6 +22,7 @@ class User_library {
 		$this->load->helper('cookie');
 		$this->load->library('ion_auth');
 		$this->load->library('session');
+		$this->load->model('users_profile_model');
 
 		//initialize db tables data
 		//$this->tables = $this->config->item('tables', 'ion_auth');
@@ -185,29 +186,37 @@ class User_library {
 		}
 	}
 
-	public function _format_user($input) {
+	public function _format_user($fields = FALSE, $options = FALSE) {
+
+		if (!$fields) {
+			return false;
+		}
 
 		$permission = array('id', 'user_id', 'username', 'email', 'first_name', 'last_name', 'company', 'phone', 'created_on');
 
 		foreach ($permission as $value) {
-			$user[$value] = isset($input[$value]) ? $input[$value] : '';
+			$user[$value] = isset($fields[$value]) ? $fields[$value] : '';
 		}
 
 		if (!isset($user['user_id']) || !is_numeric($user['user_id'])) {
-			if (isset($input['id']) && is_numeric($input['id'])) {
-				$user['user_id'] = $input['id'];
+			if (isset($fields['id']) && is_numeric($fields['id'])) {
+				$user['user_id'] = $fields['id'];
 			}
 		}
 
 		// Computed info
-		$user['display_name'] = $input['first_name'];
-		if (isset($input['last_name'])) {
+		$user['display_name'] = $fields['first_name'];
+		if (isset($fields['last_name'])) {
 			if (strlen($user['display_name']) > 0) {
-				$user['display_name'] .= ', ' . $input['last_name'];
+				$user['display_name'] .= ', ' . $fields['last_name'];
 			} else {
-				$user['display_name'] .= $input['last_name'];
+				$user['display_name'] .= $fields['last_name'];
 			}
 		}
+
+		// Get User Profile
+		$_user_profile = $this->users_profile_model->get_profile($fields, $options);
+		$user = array_merge($user, $_user_profile);
 
 		return $user;
 	}
