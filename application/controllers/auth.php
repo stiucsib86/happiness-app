@@ -13,11 +13,6 @@ class Auth extends REST_Controller {
 		$this->load->library('ion_auth');
 		$this->load->library('user_library');
 		$this->load->library('fb_auth_library');
-
-		// Load MongoDB library instead of native db driver if required
-		$this->config->item('use_mongodb', 'ion_auth') ?
-						$this->load->library('mongo_db') :
-						$this->load->database();
 	}
 
 	public function index_get() {
