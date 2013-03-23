@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+
+root { 
+    display: block;
+}
+
+html {
+	margin:0; padding:0;
+}
+body {
+	margin:0; padding:0;
+	background:url(/images/gx_bg.jpg) center 100px no-repeat;
+	font-family:"Open Sans", Arial, Times;
+}
+
+.logo {
+	margin:30px auto; padding:0;
+	width:392px; height:197px;
+	background:url(/images/gx_logo.png) top center no-repeat;
+}
+.logoLong {
+	margin:20px 0; padding:0;
+	width:385px; height:80px;
+	background:url(/images/gx_logo_long.png) top center no-repeat;
+}
+
+
+.maincontents {
+	margin:0 auto; padding:0px;
+	width:1000px;
+}
+
+.maincontents .activities {
+	border-right: #CCC solid thin;
+	padding-right:20px;
+}
+.maincontents .activities .row-fluid {
+	margin-bottom: 20px;
+}
+
+.maincontents .signup {
+	padding:0;
+	text-align:center;
+}
+.maincontents .signup .howto {
+	padding:10px 20px;
+}
+.maincontents .signup .howto ol li {
+	padding:10px 0;
+}
+.maincontents h4 {
+	margin-bottom: 30px;
+}
+
+.fineprint {
+	font-size:10px;
+}
+
+.footer {
+	margin:10px auto; padding:10px;
+}
