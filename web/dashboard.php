@@ -33,17 +33,9 @@ if ($_POST) {
 </script>
 <div class="dashboard container">
 	<div class="row-fluid top-item">
-		<div class="span7">
-			<div class="logoLong"></div>
-		</div>
-		<div class="span5 menu">
-			<ul>
-				<li><div class="menu-profile"></div><a href="/dashboard">My Profile</a></li>
-                <li><div class="menu-mobile"></div><a href="javascript:alert('Coming soon...');">Download Mobile App</a></li>
-                <li><div class="menu-logout"></div><a href="/logout">Log Out</a></li>
-              </ul>
-            </div>
-        </div>
+
+		<?php require_once 'header_mini.php'; ?>
+
         <div class="row-fluid">
             <div class="span4 friendslist">
 				<?php require_once('friendlist.php'); ?>
