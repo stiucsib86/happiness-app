@@ -1,4 +1,9 @@
-                <h4>Gifting</h4>
+	<script>
+		jQuery.getJSON("http://happiness-app.ap01.aws.af.cm/gifting/?receiver_fb_id=<?php if(isset($_GET['id'])) echo $_GET['id']; ?>&callback=?", function(data) {
+			console.log(data);
+		});
+	</script>
+                <h4>Accept Gift</h4>
 
                 <div class="row-fluid"> 
                     <div class="span12">
