@@ -35,7 +35,7 @@ require_once('header.php');
 								{{$index + 1}}
 							</td>
 							<td>
-								<div ng-bind-html-unsafe='notification.message'></div>
+								<div ng-click="mark_as_read(notification)" ng-bind-html-unsafe='notification.message'></div>
 							</td>
 							<td>
 								<div ng-show="notification.is_read == 0">
